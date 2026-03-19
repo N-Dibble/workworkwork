@@ -13,23 +13,23 @@
 </head>
 <body class="bg-zinc-950 text-zinc-200 min-h-screen">
   <div class="max-w-6xl mx-auto p-8">
-    <!-- Header - looks like a boring productivity tool -->
+    <!-- Boring disguise header -->
     <div class="flex justify-between items-center mb-8">
       <div>
         <h1 class="text-3xl font-bold tracking-tight">Productivity Dashboard</h1>
         <p class="text-zinc-500">Quick tools • Notes • Focus mode</p>
       </div>
-      <div class="text-xs text-zinc-500">Press Ctrl + Shift + I for advanced tools</div>
+      <div class="text-xs text-zinc-500">Press Ctrl + Shift + I for advanced settings</div>
     </div>
 
-    <!-- Fake innocent content (makes it look legit) -->
+    <!-- Fake content to look legitimate -->
     <div class="grid grid-cols-3 gap-6 mb-12">
       <div class="bg-zinc-900 rounded-2xl p-6">
         <h3 class="font-semibold mb-2">Today's Tasks</h3>
         <ul class="space-y-2 text-sm">
-          <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Finish report</li>
-          <li class="flex items-center gap-2"><span class="text-amber-500">○</span> Review notes</li>
-          <li class="flex items-center gap-2"><span class="text-amber-500">○</span> Schedule meeting</li>
+          <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Review notes</li>
+          <li class="flex items-center gap-2"><span class="text-amber-500">○</span> Finish assignment</li>
+          <li class="flex items-center gap-2"><span class="text-amber-500">○</span> Schedule study block</li>
         </ul>
       </div>
       <div class="bg-zinc-900 rounded-2xl p-6">
@@ -46,69 +46,47 @@
       </div>
     </div>
 
-    <!-- Hidden Game Launcher -->
+    <!-- Hidden .io Games Section -->
     <div id="gameLauncher" class="hidden">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-lime-400">.io Stealth Launcher</h2>
+        <h2 class="text-2xl font-bold text-lime-400">Advanced Tools</h2>
         <button onclick="hideLauncher()" 
                 class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm">
-          Hide Launcher
+          Close Panel
         </button>
       </div>
       
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gameGrid">
-        <!-- Games populated by JavaScript below -->
+        <!-- Games populated dynamically -->
       </div>
     </div>
   </div>
 
   <script>
-    // === EDITABLE LIST OF .IO GAMES (40+ popular ones - 2026) ===
+    // 2026-relevant .io games (classics + currently popular ones)
     const games = [
       { name: "Agar.io", url: "https://agar.io/" },
       { name: "Slither.io", url: "https://slither.io/" },
+      { name: "Krunker.io", url: "https://krunker.io/" },
+      { name: "Shell Shockers", url: "https://shellshock.io/" },
+      { name: "Smash Karts", url: "https://smashkarts.io/" },
+      { name: "Deadshot.io", url: "https://deadshot.io/" },
+      { name: "Bloxd.io", url: "https://bloxd.io/" },
+      { name: "Venge.io", url: "https://venge.io/" },
+      { name: "Kour.io", url: "https://kour.io/" },
+      { name: "LOLBeans.io", url: "https://lolbeans.io/" },
+      { name: "Paper.io 2", url: "https://paperio2.com/" },
+      { name: "Surviv.io", url: "https://surviv.io/" },
+      { name: "ZombsRoyale.io", url: "https://zombsroyale.io/" },
+      { name: "Moomoo.io", url: "https://moomoo.io/" },
       { name: "Diep.io", url: "https://diep.io/" },
       { name: "Deeeep.io", url: "https://deeeep.io/" },
-      { name: "Mope.io", url: "https://mope.io/" },
-      { name: "Krunker.io", url: "https://krunker.io/" },
-      { name: "Bloxd.io", url: "https://bloxd.io/" },
       { name: "Hole.io", url: "https://hole.io/" },
       { name: "Skribbl.io", url: "https://skribbl.io/" },
-      { name: "Moomoo.io", url: "https://moomoo.io/" },
-      { name: "Arras.io", url: "https://arras.io/" },
-      { name: "Evowars.io", url: "https://evowars.io/" },
-      { name: "BuildRoyale.io", url: "https://buildroyale.io/" },
-      { name: "Hexanaut.io", url: "https://hexanaut.io/" },
-      { name: "Drednot.io", url: "https://drednot.io/" },
-      { name: "Aquapark.io", url: "https://aquapark.io/" },
-      { name: "Bonk.io", url: "https://bonk.io/" },
-      { name: "Braains.io", url: "https://braains.io/" },
-      { name: "Curvefever.io", url: "https://curvefever.io/" },
-      { name: "Deadshot.io", url: "https://deadshot.io/" },
-      { name: "Digdig.io", url: "https://digdig.io/" },
-      { name: "EvoWorld.io", url: "https://evoworld.io/" },
-      { name: "Florr.io", url: "https://florr.io/" },
-      { name: "Generals.io", url: "https://generals.io/" },
-      { name: "Gota.io", url: "https://gota.io/" },
-      { name: "Hordes.io", url: "https://hordes.io/" },
-      { name: "Kartwars.io", url: "https://kartwars.io/" },
-      { name: "LittleBigSnake.io", url: "https://littlebigsnake.io/" },
-      { name: "Lordz.io", url: "https://lordz.io/" },
-      { name: "Narwhale.io", url: "https://narwhale.io/" },
-      { name: "Oceanar.io", url: "https://oceanar.io/" },
-      { name: "Openfront.io", url: "https://openfront.io/" },
-      { name: "Starblast.io", url: "https://starblast.io/" },
-      { name: "Wings.io", url: "https://wings.io/" },
-      { name: "ZombsRoyale.io", url: "https://zombsroyale.io/" },
-      { name: "Surviv.io", url: "https://surviv.io/" },
-      { name: "Smash Karts", url: "https://smashkarts.io/" },
-      { name: "Shell Shockers", url: "https://shellshock.io/" },
-      { name: "Paper.io 2", url: "https://paperio2.com/" },
-      { name: "Tanks 3D", url: "https://tanks3d.io/" },
-      { name: "Veck.io", url: "https://veck.io/" }
+      { name: "1v1.LOL", url: "https://1v1.lol/" },
+      { name: "BuildRoyale.io", url: "https://buildroyale.io/" }
     ];
 
-    // Populate the grid
     function populateGames() {
       const grid = document.getElementById('gameGrid');
       grid.innerHTML = '';
@@ -119,35 +97,61 @@
           <div class="flex justify-between items-start">
             <div>
               <div class="font-semibold text-lg">${game.name}</div>
-              <div class="text-xs text-zinc-500 mt-1">${game.url}</div>
+              <div class="text-xs text-zinc-500 mt-1 truncate max-w-[180px]">${game.url}</div>
             </div>
-            <button onclick="launchGame('${game.url}'); event.stopImmediatePropagation();"
-                    class="px-5 py-2 bg-lime-500 hover:bg-lime-600 text-black font-semibold rounded-xl text-sm">
-              Launch Stealthily
+            <button class="px-5 py-2 bg-lime-500 hover:bg-lime-600 text-black font-semibold rounded-xl text-sm">
+              Launch
             </button>
           </div>
         `;
-        card.onclick = () => launchGame(game.url);
+        // Click anywhere on card or button launches stealthily
+        card.onclick = (e) => {
+          e.stopPropagation();
+          launchStealth(game.url);
+        };
         grid.appendChild(card);
       });
     }
 
-    // Launch in new undetectable tab
-    function launchGame(url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-
-    // Toggle launcher with hotkey
-    function toggleLauncher() {
-      const launcher = document.getElementById('gameLauncher');
-      launcher.classList.toggle('hidden');
+    // Stealth launch: about:blank → navigate (your requested method)
+    function launchStealth(url) {
+      const blankTab = window.open('about:blank', '_blank', 'noopener,noreferrer');
+      if (blankTab) {
+        try {
+          // Tiny random delay (20–100 ms) to feel less robotic + reduce detection chance
+          setTimeout(() => {
+            blankTab.location.href = url;
+            blankTab.blur();       // Try to defocus new tab
+            window.focus();        // Bring launcher back to front
+          }, Math.random() * 80 + 20);
+        } catch (err) {
+          // Rare cross-origin/security block fallback
+          blankTab.close();
+          const fallback = window.open(url, '_blank', 'noopener,noreferrer');
+          if (fallback) {
+            fallback.blur();
+            window.focus();
+          }
+        }
+      } else {
+        // Popup blocked → direct fallback
+        const direct = window.open(url, '_blank', 'noopener,noreferrer');
+        if (direct) {
+          direct.blur();
+          window.focus();
+        }
+      }
     }
 
     function hideLauncher() {
       document.getElementById('gameLauncher').classList.add('hidden');
     }
 
-    // Hotkey listener: Ctrl + Shift + I
+    function toggleLauncher() {
+      document.getElementById('gameLauncher').classList.toggle('hidden');
+    }
+
+    // Stealth hotkey: Ctrl + Shift + I
     document.addEventListener('keydown', (e) => {
       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
         e.preventDefault();
@@ -155,19 +159,9 @@
       }
     });
 
-    // Tailwind script + init
+    // Initialize
     document.addEventListener('DOMContentLoaded', () => {
       populateGames();
-      // Optional: auto-hide after 30 seconds of inactivity (extra stealth)
-      let timeout;
-      document.addEventListener('mousemove', () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          if (!document.getElementById('gameLauncher').classList.contains('hidden')) {
-            // hideLauncher(); // uncomment if you want auto-hide
-          }
-        }, 30000);
-      });
     });
   </script>
 </body>
